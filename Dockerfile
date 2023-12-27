@@ -1,9 +1,9 @@
 FROM archlinux:base AS BUILDER
 
 RUN useradd -m test
-USER test
 
 RUN pacman -S git
+USER test
 RUN git clone https://aur.archlinux.org/xmacro.git
 RUN cd xmacro && makepkg -s
 
