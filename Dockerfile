@@ -1,3 +1,12 @@
+FROM archlinux:base AS BUILDER
+
+RUN useradd -m test
+USER test
+
+RUN pacman -S git
+RUN git clone https://aur.archlinux.org/xmacro.git
+RUN cd xmacro && makepkg -s
+
 FROM toetje585/arch-wine-vnc:latest
 LABEL org.opencontainers.image.authors = "Toetje585"
 LABEL org.opencontainers.image.source = "https://github.com/wine-gameservers/arch-wine-vnc"
