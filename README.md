@@ -103,10 +103,10 @@ services:
       - PGID=<PGID from user>
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /opt/fs22/config:/opt/fs22/config
-      - /opt/fs22/game:/opt/fs22/game
-      - /opt/fs22/dlc:/opt/fs22/dlc
-      - /opt/fs22/installer:/opt/fs22/installer
+      - /home/container/config:/home/container/config
+      - /home/container/game:/home/container/game
+      - /home/container/dlc:/home/container/dlc
+      - /home/container/installer:/home/container/installer
     ports:
       - 5900:5900/tcp
       - 8080:8080/tcp
@@ -127,10 +127,10 @@ $ docker run -d \
     -p 10823:10823/tcp \
     -p 10823:10823/udp \
     -v /etc/localtime:/etc/localtime:ro \
-    -v /opt/fs22/installer:/opt/fs22/installer \
-    -v /opt/fs22/config:/opt/fs22/config \
-    -v /opt/fs22/game:/opt/fs22/game \
-    -v /opt/fs22/dlc:/opt/fs22/dlc \
+    -v /home/container/installer:/home/container/installer \
+    -v /home/container/config:/home/container/config \
+    -v /home/container/game:/home/container/game \
+    -v /home/container/dlc:/home/container/dlc \
     -e VNC_PASSWORD="<your vnc password>" \
     -e WEB_USERNAME="<dedicated server portal username>" \
     -e WEB_PASSWORD="<dedicated server portal password>" \
@@ -170,12 +170,12 @@ The DLC files are often just an .exe executable you can download them, we move t
 
 To ensure that the installation remains intact even if you remove or update the Docker container, it is important to configure specific directories on the host side. A common practice is to place these directories in `/opt`, although you can choose any other preferred mount point according to your needs and preferences.
 
-`$sudo mkdir -p /opt/fs22/{config,game,installer,dlc}`
+`$sudo mkdir -p /home/container/{config,game,installer,dlc}`
 
 To enable read and write access for the user account configured in the compose file (PUID/PGID), we need to ensure that the Docker container can interact with the designated directory. This can be achieved by executing the following command, which grants the necessary permissions:
 
 ```bash
-sudo chown -R myuser:mygroup /opt/fs22
+sudo chown -R myuser:mygroup /home/container
 ```
 
 Replace `<myuser>` with the appropriate user and `<mygroup>` with the users primary group (often the same as `<myuser>` if unsure use the id command below).
@@ -211,10 +211,10 @@ You should now unpack the installer and place the unzipped files inside the */yo
 *Note: left mounth paths are on the host machine, the right mount path is inside the docker image and should be left untouched*
 
 ```
-- /your/path/fs22/installer:/opt/fs22/installer
-- /your/path/fs22/config:/opt/fs22/config
-- /your/path/fs22/game:/opt/fs22/game
-- /your/path/fs22/dlc:/opt/fs22/dlc
+- /your/path/fs22/installer:/home/container/installer
+- /your/path/fs22/config:/home/container/config
+- /your/path/fs22/game:/home/container/game
+- /your/path/fs22/dlc:/home/container/dlc
 ```
 
 ## Starting the container

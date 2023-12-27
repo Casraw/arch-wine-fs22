@@ -6,9 +6,9 @@ docker run -d \
     -p 10823:10823/tcp \
     -p 10823:10823/udp \
     -v /etc/localtime:/etc/localtime:ro \
-    -v /opt/fs22/installer:/opt/fs22/installer \
-    -v /opt/fs22/config:/opt/fs22/config \
-    -v /opt/fs22/game:/opt/fs22/game \
+    -v /home/container/installer:/home/container/installer \
+    -v /home/container/config:/home/container/config \
+    -v /home/container/game:/home/container/game \
     -e PUID=<UID from user> \
     -e PGID=<UID from user> \
     -e VNC_PASSWORD="<your vnc password>" \
