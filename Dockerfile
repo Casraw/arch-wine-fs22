@@ -38,4 +38,4 @@ EXPOSE 8080/tcp
 EXPOSE 10823/tcp
 EXPOSE 10823/udp
 
-RUN -R +w /var/log
+RUN chmod -R +w /var/log
