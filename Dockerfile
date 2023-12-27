@@ -16,7 +16,7 @@ LABEL org.opencontainers.image.source = "https://github.com/wine-gameservers/arc
 # additional files
 ##################
 
-COPY --from=BUILDER xmacro/*.pkg.tar.zst xmacro.pkg.tar.zst
+COPY --from=BUILDER /gitclone/xmacro/*.pkg.tar.zst xmacro.pkg.tar.zst
 
 COPY build/rootfs /
 
