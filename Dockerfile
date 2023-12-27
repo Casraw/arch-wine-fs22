@@ -5,6 +5,7 @@ RUN useradd -m test
 RUN pacman -Sy --noconfirm
 RUN pacman -S git --noconfirm
 USER test
+WORKDIR /gitclone
 RUN git clone https://aur.archlinux.org/xmacro.git
 RUN cd xmacro && makepkg -s
 
