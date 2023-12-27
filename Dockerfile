@@ -38,4 +38,5 @@ EXPOSE 8080/tcp
 EXPOSE 10823/tcp
 EXPOSE 10823/udp
 
+RUN mkdir -p /home/container/log
 WORKDIR /home/container
