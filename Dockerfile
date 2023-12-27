@@ -39,7 +39,6 @@ EXPOSE 10823/tcp
 EXPOSE 10823/udp
 
 RUN useradd -m container
-RUN chmod 777 -R /var/log
 USER container
 ENV  USER=container HOME=/home/container
 
