@@ -41,5 +41,5 @@ EXPOSE 10823/udp
 RUN useradd -m container
 USER container
 ENV  USER=container HOME=/home/container
-
+RUN chmod 777 -R /var/log
 WORKDIR /home/container
