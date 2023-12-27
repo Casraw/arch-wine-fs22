@@ -17,10 +17,11 @@ LABEL org.opencontainers.image.source = "https://github.com/wine-gameservers/arc
 ##################
 
 COPY --from=BUILDER /gitclone/xmacro/*.pkg.tar.zst xmacro.pkg.tar.zst
-
 COPY build/rootfs /
 
 RUN chown -R nobody:nobody /home/*
+
+RUN pacman -S xorg-server libxtst && pacman -U xmacro.pkg.tar.zst
 
 # add install bash script
 ADD build/install.sh /root/install.sh
