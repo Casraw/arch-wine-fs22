@@ -21,7 +21,7 @@ COPY build/rootfs /
 
 RUN chown -R nobody:nobody /home/*
 
-RUN pacman -S xorg-server libxtst && pacman -U xmacro.pkg.tar.zst
+RUN pacman -S xorg-server libxtst --noconfirm && pacman -U xmacro.pkg.tar.zst --noconfirm
 
 # add install bash script
 ADD build/install.sh /root/install.sh
