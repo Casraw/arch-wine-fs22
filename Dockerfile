@@ -2,7 +2,7 @@ FROM archlinux:base AS BUILDER
 
 RUN useradd -m test
 
-RUN pacman -SyY --noconfirm
+RUN pacman -Sy --noconfirm
 RUN pacman -S git --noconfirm
 USER test
 RUN git clone https://aur.archlinux.org/xmacro.git
