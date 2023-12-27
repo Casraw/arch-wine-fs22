@@ -38,4 +38,8 @@ EXPOSE 8080/tcp
 EXPOSE 10823/tcp
 EXPOSE 10823/udp
 
-RUN chmod -R +w /var/log
+RUN useradd -m container
+USER container
+ENV  USER=container HOME=/home/container
+
+WORKDIR /home/container
