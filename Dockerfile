@@ -3,7 +3,7 @@ FROM archlinux:base AS BUILDER
 RUN useradd -m test
 
 RUN pacman -Sy --noconfirm
-RUN pacman -S git --noconfirm
+RUN pacman -S git fakeroot binutils --noconfirm
 USER test
 WORKDIR /gitclone
 RUN git clone https://aur.archlinux.org/xmacro.git
