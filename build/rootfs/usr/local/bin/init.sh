@@ -15,7 +15,7 @@ else
 fi
 
 # set user nobody to specified user id (non unique)
-usermod -o -u "${PUID}" nobody &>/dev/null
+usermod -o -u "${PUID}" nobody 
 
 export PGID=$(echo "${PGID}" | sed -e 's~^[ \t]*~~;s~[ \t]*$~~')
 if [[ ! -z "${PGID}" ]]; then
