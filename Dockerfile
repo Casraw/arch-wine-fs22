@@ -25,7 +25,7 @@ EXPOSE 10823/tcp
 EXPOSE 10823/udp
 
 RUN useradd -m container
-USER container
+USER root
 ENV  USER=container HOME=/home/container
 
 WORKDIR /home/container
