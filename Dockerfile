@@ -29,4 +29,4 @@ EXPOSE 10823/udp
 
 WORKDIR /home/container
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor.conf", "-n"]
+CMD ["exec", "/usr/bin/supervisord", "-c", "/etc/supervisor.conf", "-n"]
