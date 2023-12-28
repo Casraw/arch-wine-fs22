@@ -23,3 +23,9 @@ EXPOSE 8080/tcp
 # Expose port for the FS22 Gameserver
 EXPOSE 10823/tcp
 EXPOSE 10823/udp
+
+RUN useradd -m container
+USER container
+ENV  USER=container HOME=/home/container
+
+WORKDIR /home/container
