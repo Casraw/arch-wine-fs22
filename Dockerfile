@@ -7,8 +7,6 @@ LABEL org.opencontainers.image.source = "https://github.com/wine-gameservers/arc
 
 COPY build/rootfs /
 
-RUN mkdir -p /home/container/log/
-RUN touch /home/container/log/supervisord.log
 RUN chown -R nobody:nobody /home/*
 
 # add install bash script
