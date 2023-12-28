@@ -28,5 +28,4 @@ EXPOSE 10823/tcp
 EXPOSE 10823/udp
 
 WORKDIR /home/container
-USER root
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor.conf", "-n"]
