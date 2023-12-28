@@ -11,7 +11,7 @@ if [[ ! -z "${PUID}" ]]; then
 	echo "[info] PUID defined as '${PUID}'" | ts '%Y-%m-%d %H:%M:%.S'
 else
 	echo "[warn] PUID not defined (via -e PUID), defaulting to '99'" | ts '%Y-%m-%d %H:%M:%.S'
-	export PUID="998"
+	export PUID="99"
 fi
 
 # set user nobody to specified user id (non unique)
@@ -22,7 +22,7 @@ if [[ ! -z "${PGID}" ]]; then
 	echo "[info] PGID defined as '${PGID}'" | ts '%Y-%m-%d %H:%M:%.S'
 else
 	echo "[warn] PGID not defined (via -e PGID), defaulting to '100'" | ts '%Y-%m-%d %H:%M:%.S'
-	export PGID="998"
+	export PGID="100"
 fi
 
 # set group users to specified group id (non unique)
@@ -43,3 +43,5 @@ echo "[info] Starting Supervisor..." | ts '%Y-%m-%d %H:%M:%.S'
 
 # restore file descriptors to prevent duplicate stdout & stderr to supervisord.log
 exec 1>&3 2>&4
+
+exec /usr/bin/supervisord -c /etc/supervisor.conf -n

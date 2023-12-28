@@ -15,7 +15,6 @@ ADD build/install.sh /root/install.sh
 # install script
 ##################
 RUN chmod +x /root/install.sh && /bin/bash /root/install.sh
-RUN chmod +x /usr/local/bin/init.sh && /bin/bash /usr/local/bin/init.sh
 
 # Expose port for FS22 Webserver
 
@@ -25,6 +24,8 @@ EXPOSE 8080/tcp
 EXPOSE 10823/tcp
 EXPOSE 10823/udp
 
-WORKDIR /home/container
+RUN useradd -m container
+ENV  USER=container HOME=/home/container
+USER root
 
-CMD ["exec", "/usr/bin/supervisord", "-c", "/etc/supervisor.conf", "-n"]
+WORKDIR /home/container
