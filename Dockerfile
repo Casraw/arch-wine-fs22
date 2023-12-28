@@ -20,6 +20,7 @@ COPY --from=BUILDER /gitclone/xmacro/*.pkg.tar.zst xmacro.pkg.tar.zst
 COPY build/rootfs /
 
 RUN chown -R nobody:nobody /home/*
+RUN chown -R nobody:nobody /var/log
 RUN pacman -S xorg-server libxtst --noconfirm && pacman -U xmacro.pkg.tar.zst --noconfirm
 RUN mkdir -p /home/container/{config,game,installer,dlc}
 
